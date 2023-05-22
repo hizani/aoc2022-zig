@@ -31,6 +31,7 @@ pub fn main() !void {
         }
         current += try std.fmt.parseInt(u32, line, 10);
     }
+    insert(&top, current);
 
     var acc: u32 = 0;
     for (top) |num| acc += num;
