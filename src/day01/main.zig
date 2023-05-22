@@ -1,28 +1,11 @@
 const std = @import("std");
 const io = std.io;
+const common = @import("common");
 
 const Elf = struct {
     number: u32 = 0,
     calories: u32 = 0,
 };
-
-fn parseU32FromString(buf: []const u8) !u32 {
-    var result: u32 = 0;
-    for (buf) |c| {
-        const digit = switch (c) {
-            '0'...'9' => c - '0',
-            else => return error.InvalidChar,
-        };
-
-        if (@mulWithOverflow(u32, result, 10, &result))
-            return error.Overflow;
-
-        if (@addWithOverflow(u32, result, digit, &result))
-            return error.Overflow;
-    }
-
-    return result;
-}
 
 fn insertTopElf(top_elfs: []Elf, candidate: Elf, position: usize) void {
     var i: usize = 1;
@@ -64,7 +47,7 @@ pub fn main() !void {
             current_elf.calories = 0;
             continue;
         }
-        current_elf.calories += try parseU32FromString(line);
+        current_elf.calories += try common.parseNumber(u32, line);
     }
 
     var most_calories_acc: u32 = 0;
