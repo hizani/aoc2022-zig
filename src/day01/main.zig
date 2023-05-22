@@ -8,7 +8,6 @@ const Elf = struct {
 
 fn parseU32FromString(buf: []const u8) !u32 {
     var result: u32 = 0;
-
     for (buf) |c| {
         const digit = switch (c) {
             '0'...'9' => c - '0',
@@ -26,8 +25,10 @@ fn parseU32FromString(buf: []const u8) !u32 {
 }
 
 fn insertTopElf(top_elfs: []Elf, candidate: Elf, position: usize) void {
-    if (position != 0)
-        insertTopElf(top_elfs, top_elfs[position], position - 1);
+    var i: usize = 1;
+    while (i < top_elfs[0 .. position + 1].len) : (i += 1)
+        top_elfs[i - 1] = top_elfs[i];
+
     top_elfs[position] = candidate;
 }
 
