@@ -41,9 +41,8 @@ fn insertIfTopElf(top_elfs: []Elf, candidate: Elf) void {
             return;
         }
 
-        if (i != 0) {
+        if (i != 0)
             insertTopElf(top_elfs, candidate, i - 1);
-        }
         return;
     }
 }
@@ -59,7 +58,7 @@ pub fn main() !void {
     var current_elf = Elf{};
     while (try stdio_reader.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         if (line.len == 0) {
-            insertIfTopElf(top_elfs[0..], current_elf);
+            insertIfTopElf(&top_elfs, current_elf);
             current_elf.number += 1;
             current_elf.calories = 0;
             continue;
