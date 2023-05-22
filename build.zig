@@ -24,6 +24,7 @@ pub fn build(b: *std.build.Builder) void {
         const exe = b.addExecutable(&day_names[idx], &path);
         exe.setTarget(target);
         exe.setBuildMode(mode);
+        exe.addPackagePath("common", "src/common.zig");
         exe.install();
 
         const run_cmd = exe.run();
