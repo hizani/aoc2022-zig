@@ -1,11 +1,11 @@
 const std = @import("std");
-const io = std.io;
 
 const TOP_SIZE = 3;
 
 fn insert(top: []u32, calories: u32) void {
     if (top[0] > calories) return;
     top[0] = calories;
+
     var i: usize = 0;
     while (i < top.len - 1) : (i += 1) {
         if (top[i] > top[i + 1]) {
@@ -18,8 +18,8 @@ fn insert(top: []u32, calories: u32) void {
 
 pub fn main() !void {
     var top: [TOP_SIZE]u32 = .{0} ** TOP_SIZE;
-    const stdin = io.getStdIn().reader();
-    const stdout = io.getStdOut().writer();
+    const stdin = std.io.getStdIn().reader();
+    const stdout = std.io.getStdOut().writer();
     var current: u32 = 0;
     var buf: [10]u8 = undefined;
 
