@@ -69,7 +69,6 @@ pub fn main() !void {
 
     var most_calories_acc: u32 = 0;
     for (top_elfs) |num| {
-        std.debug.print("{d}, {d}\n", .{ num.number, num.calories });
         most_calories_acc += num.calories;
     }
 
