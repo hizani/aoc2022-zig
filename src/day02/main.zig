@@ -1,7 +1,7 @@
 const std = @import("std");
 
 // draw, win, defeat, rock, paper, scissors
-const scores = [_]u32{ 3, 6, 0, 1, 2, 3 };
+const scores = [_]u8{ 3, 6, 0, 1, 2, 3 };
 
 fn playP1(opponent: u8, player: u8) u32 {
     const o = opponent - 'A';
