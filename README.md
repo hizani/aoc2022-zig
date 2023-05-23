@@ -8,7 +8,7 @@ cat input | zig build day01
 |       day        |    completeness    |     
 |------------------|--------------------|
 | [1](src/day01)   | ✅                 |
-| [2](src/day02)   | ❌                 |
+| [2](src/day02)   | ✅                 |
 | [3](src/day03)   | ❌                 |
 | [4](src/day04)   | ❌                 |
 | [5](src/day05)   | ❌                 |
