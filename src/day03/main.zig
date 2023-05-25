@@ -32,6 +32,11 @@ fn findIntersection(args: anytype) !?u8 {
             if (args.len < 2) {
                 @compileError("two or more elements expected, found " ++ args.len);
             }
+            const arg_type_info = @typeInfo((@TypeOf(args[0])));
+            if (arg_type_info != .Pointer and arg_type_info != .Array) {
+                @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType));
+            }
+
             var count_array = [_][CHAR_COUNT]u16{[_]u16{0} ** CHAR_COUNT} ** args.len;
             inline for (args) |arg, i| {
                 for (arg) |value| {
