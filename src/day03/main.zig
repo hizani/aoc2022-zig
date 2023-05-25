@@ -41,7 +41,7 @@ fn findIntersection(args: anytype) !?u8 {
             }
             break :blk count_array;
         },
-        else => @compileError("expected tuple or struct, found " ++ @typeName(ArgsType)),
+        else => @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType)),
     };
     comptime var char_idx: u8 = 0;
     inline while (char_idx < CHAR_COUNT) : (char_idx += 1) {
