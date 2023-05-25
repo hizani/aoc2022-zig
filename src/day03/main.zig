@@ -19,12 +19,14 @@ fn findIntersection(args: anytype) !?u8 {
             if (fields_info.len < 2) {
                 @compileError("two or more fields expected, found " ++ fields_info.len);
             }
-            const arg_type_info = @typeInfo(fields_info[0].field_type);
-            if (arg_type_info != .Pointer and arg_type_info != .Array) {
-                @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType));
-            }
             var count_array = [_][CHAR_COUNT]u16{[_]u16{0} ** CHAR_COUNT} ** fields_info.len;
             inline for (fields_info) |field, i| {
+                const arg_type_info = @typeInfo(field.field_type);
+                if (arg_type_info != .Array) {
+                    if (arg_type_info != .Pointer or arg_type_info.Pointer.size != std.builtin.Type.Pointer.Size.Slice) {
+                        @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType));
+                    }
+                }
                 for (@field(args, field.name)) |value| {
                     const char = try charNumber(value);
                     count_array[i][char] += 1;
@@ -37,8 +39,10 @@ fn findIntersection(args: anytype) !?u8 {
                 @compileError("two or more elements expected, found " ++ args.len);
             }
             const arg_type_info = @typeInfo((@TypeOf(args[0])));
-            if (arg_type_info != .Pointer and arg_type_info != .Array) {
-                @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType));
+            if (arg_type_info != .Array) {
+                if (arg_type_info != .Pointer or arg_type_info.Pointer.size != std.builtin.Type.Pointer.Size.Slice) {
+                    @compileError("expected tuple, struct or matrix, found " ++ @typeName(ArgsType));
+                }
             }
 
             var count_array = [_][CHAR_COUNT]u16{[_]u16{0} ** CHAR_COUNT} ** args.len;
