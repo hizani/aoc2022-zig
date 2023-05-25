@@ -62,13 +62,13 @@ pub fn main() !void {
     var elfGroupBuf: [GROUP_SIZE][50]u8 = undefined;
     var elfGroup: [GROUP_SIZE][]u8 = undefined;
     var group_member: u8 = 0;
-    //var priority1: u32 = 0;
+    var priority1: u32 = 0;
     var priority2: u32 = 0;
     while (try stdin.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         if (line.len == 0) return error.BadInput;
         //part1
-        //const mid = line.len / 2;
-        //priority1 += try findIntersection(.{ line[0..mid], line[mid..] }) orelse 0;
+        const mid = line.len / 2;
+        priority1 += try findIntersection(.{ line[0..mid], line[mid..] }) orelse 0;
         //part2
         std.mem.copy(u8, &elfGroupBuf[group_member], line[0..]);
         elfGroup[group_member] = elfGroupBuf[group_member][0..line.len];
@@ -79,6 +79,6 @@ pub fn main() !void {
         }
     }
 
-    //try stdout.print("part1: {d}\n", .{priority1});
+    try stdout.print("part1: {d}\n", .{priority1});
     try stdout.print("part2: {d}\n", .{priority2});
 }
