@@ -13,7 +13,7 @@ cat input | zig build day01
 | [04](src/day04)  | ✅                 |
 | [05](src/day05)  | ✅                 |
 | [06](src/day06)  | ✅                 |
-| [07](src/day07)  | ❌                 |
+| [07](src/day07)  | ✅                 |
 | [08](src/day08)  | ❌                 |
 | [09](src/day09)  | ❌                 |
 | [10](src/day10)  | ❌                 |
