@@ -134,6 +134,6 @@ pub fn main() !void {
     }
     const map = Map{ .trees = trees.items, .rows = rows, .cols = cols };
 
-    //try stdout.print("part1:\t{d}\n", .{map.countVisibleTrees()});
+    try stdout.print("part1:\t{d}\n", .{map.countVisibleTrees()});
     try stdout.print("part2:\t{d}\n", .{map.findMaxScore()});
 }
