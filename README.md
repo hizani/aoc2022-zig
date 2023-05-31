@@ -2,7 +2,7 @@
 
 Usage:
 ```
-cat input | zig build day01
+cat src/day01/input | zig build day01
 ```
 
 |       day        |    completeness    |     
