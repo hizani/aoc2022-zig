@@ -10,7 +10,7 @@ fn Bridge(comptime size: usize) type {
         const Self = @This();
         grid: [size * size]u1 = [_]u1{0} ** (size * size),
 
-        fn proceedSteps(self: *Self, knots: []Knot, direction: [2]i3, steps: usize) !void {
+        fn proceedSteps(self: *Self, knots: []Knot, direction: [2]i2, steps: usize) !void {
             var step: usize = 0;
             while (step < steps) : (step += 1) {
                 knots[0].x += direction[0];
@@ -51,7 +51,7 @@ pub fn main() !void {
     var buf: [6]u8 = undefined;
     while (try stdin.readUntilDelimiterOrEof(&buf, '\n')) |line| {
         if (line.len < 3) return error.BadInput;
-        const direction: [2]i3 = blk: {
+        const direction: [2]i2 = blk: {
             switch (line[0]) {
                 'L' => break :blk .{ -1, 0 },
                 'R' => break :blk .{ 1, 0 },
