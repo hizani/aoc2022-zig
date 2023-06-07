@@ -15,7 +15,7 @@ cat src/day01/input | zig build day01
 | [06](src/day06)  | ✅                 |
 | [07](src/day07)  | ✅                 |
 | [08](src/day08)  | ✅                 |
-| [09](src/day09)  | ❌                 |
+| [09](src/day09)  | ✅                 |
 | [10](src/day10)  | ❌                 |
 | [11](src/day11)  | ❌                 |
 | [12](src/day12)  | ❌                 |
