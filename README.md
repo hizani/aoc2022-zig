@@ -32,3 +32,8 @@ cat src/day01/input | zig build day01
 | [23](src/day23)  | ❌                 |
 | [24](src/day24)  | ❌                 |
 | [25](src/day25)  | ❌                 |
+
+---
+
+This repo is not about minimalistic, clean solutions, but about me learning Zig.
+So inside there are a lot of too generic, overkill solutions to try out new things with the language.
